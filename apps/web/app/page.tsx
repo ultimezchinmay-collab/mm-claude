@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import { catalogEntries } from '@meetmedico/ui/catalog';
+import { ThemeProvider } from '@meetmedico/ui';
 
 const sections = ['Foundations', 'Components'] as const;
 
@@ -64,7 +65,9 @@ export default function CatalogPage() {
         <div style={{ padding: '16px 24px', borderBottom: '1px solid #e0e0e0', fontSize: 13, color: '#888' }}>
           {selected.section} / {selected.name}
         </div>
-        <selected.Component />
+        <ThemeProvider>
+          <selected.Component />
+        </ThemeProvider>
       </main>
     </div>
   );
