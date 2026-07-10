@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import type { ReactNode } from 'react';
-import { TextInput, View, useColorScheme } from 'react-native';
+import { Pressable, TextInput, View, useColorScheme } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
+import { HugeiconsIcon } from '@hugeicons/react-native';
+import { ViewIcon, ViewOffIcon } from '@hugeicons/core-free-icons';
 
 import { darkColors, lightColors } from '../../tokens';
 import {
@@ -13,7 +14,7 @@ import {
   type FieldVisualState,
 } from '../fieldShell';
 
-export interface TextFieldProps {
+export interface PasswordFieldProps {
   label: string;
   required?: boolean;
   value: string;
@@ -22,16 +23,15 @@ export interface TextFieldProps {
   helperText?: string;
   error?: string;
   disabled?: boolean;
-  secureTextEntry?: boolean;
-  multiline?: boolean;
-  rightIcon?: ReactNode;
   style?: StyleProp<ViewStyle>;
   testID?: string;
   /** Storybook/docs only — forces the border's visual state without real hover/focus interaction. */
   previewState?: 'default' | 'hover' | 'focused';
+  /** Seeds the shown/hidden state — mainly useful for demonstrating the "visible" state in docs. */
+  defaultVisible?: boolean;
 }
 
-export function TextField({
+export function PasswordField({
   label,
   required,
   value,
@@ -40,17 +40,16 @@ export function TextField({
   helperText,
   error,
   disabled,
-  secureTextEntry,
-  multiline,
-  rightIcon,
   style,
   testID,
   previewState,
-}: TextFieldProps) {
+  defaultVisible = false,
+}: PasswordFieldProps) {
   const scheme = useColorScheme();
   const colors = scheme === 'dark' ? darkColors : lightColors;
   const [focused, setFocused] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [visible, setVisible] = useState(defaultVisible);
 
   const hasValue = value.length > 0;
   const state: FieldVisualState = disabled
@@ -76,8 +75,7 @@ export function TextField({
           placeholder={placeholder}
           placeholderTextColor={colors.neutral[500]}
           editable={!disabled}
-          secureTextEntry={secureTextEntry}
-          multiline={multiline}
+          secureTextEntry={!visible}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           style={[
@@ -89,7 +87,9 @@ export function TextField({
             webNoOutline,
           ]}
         />
-        {rightIcon}
+        <Pressable onPress={() => setVisible((v) => !v)} disabled={disabled} testID={`${testID}-toggle`}>
+          <HugeiconsIcon icon={visible ? ViewOffIcon : ViewIcon} size={16} color={colors.neutral[500]} />
+        </Pressable>
         <FieldLabel label={label} required={required} colors={colors} />
       </View>
       <FieldHelperText text={error ?? helperText} error={Boolean(error)} colors={colors} />

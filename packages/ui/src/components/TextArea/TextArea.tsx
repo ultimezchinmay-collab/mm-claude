@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import type { ReactNode } from 'react';
-import { TextInput, View, useColorScheme } from 'react-native';
+import { StyleSheet, TextInput, View, useColorScheme } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 
 import { darkColors, lightColors } from '../../tokens';
@@ -13,7 +12,7 @@ import {
   type FieldVisualState,
 } from '../fieldShell';
 
-export interface TextFieldProps {
+export interface TextAreaProps {
   label: string;
   required?: boolean;
   value: string;
@@ -22,16 +21,15 @@ export interface TextFieldProps {
   helperText?: string;
   error?: string;
   disabled?: boolean;
-  secureTextEntry?: boolean;
-  multiline?: boolean;
-  rightIcon?: ReactNode;
+  maxLength?: number;
+  numberOfLines?: number;
   style?: StyleProp<ViewStyle>;
   testID?: string;
   /** Storybook/docs only — forces the border's visual state without real hover/focus interaction. */
   previewState?: 'default' | 'hover' | 'focused';
 }
 
-export function TextField({
+export function TextArea({
   label,
   required,
   value,
@@ -40,13 +38,12 @@ export function TextField({
   helperText,
   error,
   disabled,
-  secureTextEntry,
-  multiline,
-  rightIcon,
+  maxLength,
+  numberOfLines = 3,
   style,
   testID,
   previewState,
-}: TextFieldProps) {
+}: TextAreaProps) {
   const scheme = useColorScheme();
   const colors = scheme === 'dark' ? darkColors : lightColors;
   const [focused, setFocused] = useState(false);
@@ -61,11 +58,12 @@ export function TextField({
 
   const borderColor = getFieldBorderColor(state, colors);
   const valueColor = disabled || !hasValue ? colors.neutral[500] : colors.neutral[900];
+  const counter = maxLength ? `${value.length} / ${maxLength} characters` : undefined;
 
   return (
     <View style={[fieldStyles.wrapper, style]} testID={testID}>
       <View
-        style={[fieldStyles.frame, { borderColor }]}
+        style={[fieldStyles.frame, styles.frame, { borderColor }]}
         {...(disabled
           ? null
           : { onPointerEnter: () => setHovered(true), onPointerLeave: () => setHovered(false) })}
@@ -76,12 +74,15 @@ export function TextField({
           placeholder={placeholder}
           placeholderTextColor={colors.neutral[500]}
           editable={!disabled}
-          secureTextEntry={secureTextEntry}
-          multiline={multiline}
+          multiline
+          numberOfLines={numberOfLines}
+          maxLength={maxLength}
+          textAlignVertical="top"
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           style={[
             fieldStyles.value,
+            styles.value,
             {
               color: valueColor,
               fontFamily: hasValue ? 'type-weight-bold-700' : 'type-weight-medium-500',
@@ -89,10 +90,18 @@ export function TextField({
             webNoOutline,
           ]}
         />
-        {rightIcon}
         <FieldLabel label={label} required={required} colors={colors} />
       </View>
-      <FieldHelperText text={error ?? helperText} error={Boolean(error)} colors={colors} />
+      <FieldHelperText text={error ?? helperText ?? counter} error={Boolean(error)} colors={colors} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  frame: {
+    alignItems: 'flex-start',
+  },
+  value: {
+    minHeight: 64,
+  },
+});
