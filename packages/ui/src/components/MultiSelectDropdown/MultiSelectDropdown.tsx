@@ -77,7 +77,7 @@ export function MultiSelectDropdown({
   }
 
   return (
-    <View style={[fieldStyles.wrapper, style]} testID={testID}>
+    <View style={[fieldStyles.wrapper, isOpen && styles.wrapperOpen, style]} testID={testID}>
       <View
         style={[fieldStyles.frame, styles.frame, { borderColor }]}
         {...(disabled
@@ -142,6 +142,11 @@ export function MultiSelectDropdown({
 const styles = StyleSheet.create({
   frame: {
     alignItems: 'flex-start',
+  },
+  // See Dropdown.tsx's wrapperOpen for why this is needed on web.
+  wrapperOpen: {
+    position: 'relative',
+    zIndex: 20,
   },
   triggerRow: {
     flex: 1,

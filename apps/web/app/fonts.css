@@ -1,0 +1,44 @@
+/* Registers Be Vietnam Pro under our type-weight token names, so RN's
+   fontFamily: 'type-weight-bold-700' (shared by mobile and web component
+   code) resolves to a real face here too. Mirrors apps/mobile/App.tsx's
+   FontGate, which does the equivalent registration via expo-font. */
+
+@font-face {
+  font-family: 'type-weight-regular-400';
+  src: url('/fonts/BeVietnamPro_400Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'type-weight-medium-500';
+  src: url('/fonts/BeVietnamPro_500Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'type-weight-semi-bold-600';
+  src: url('/fonts/BeVietnamPro_600SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'type-weight-bold-700';
+  src: url('/fonts/BeVietnamPro_700Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'type-weight-extra-bold-800';
+  src: url('/fonts/BeVietnamPro_800ExtraBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

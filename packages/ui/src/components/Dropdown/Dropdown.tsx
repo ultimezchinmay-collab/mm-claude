@@ -70,7 +70,7 @@ export function Dropdown({
   const valueColor = disabled || !hasValue ? colors.neutral[500] : colors.neutral[900];
 
   return (
-    <View style={[fieldStyles.wrapper, style]} testID={testID}>
+    <View style={[fieldStyles.wrapper, isOpen && styles.wrapperOpen, style]} testID={testID}>
       <View
         style={[fieldStyles.frame, { borderColor }]}
         {...(disabled
@@ -123,6 +123,14 @@ export function Dropdown({
 const styles = StyleSheet.create({
   trigger: {
     flex: 1,
+  },
+  // Raises this field above later siblings so the absolutely-positioned options
+  // panel isn't painted underneath the next block's own stacking context (RNW
+  // gives every View position:relative + z-index:0 by default, so a z-index deep
+  // inside a plain sibling can't otherwise "win" against DOM-later content).
+  wrapperOpen: {
+    position: 'relative',
+    zIndex: 20,
   },
   panel: {
     position: 'absolute',
