@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build --workspace=apps/web",
-  "installCommand": "npm install",
+  "buildCommand": "npm install && npm run build --workspace=apps/web",
+  "installCommand": "npm ci",
   "outputDirectory": "apps/web/.next"
 }
