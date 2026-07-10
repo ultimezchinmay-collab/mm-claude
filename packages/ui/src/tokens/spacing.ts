@@ -1,0 +1,47 @@
+export const webSpacing = {
+  'space-0': 0,
+  'space-4': 4,
+  'space-8': 8,
+  'space-12': 12,
+  'space-16': 16,
+  'space-20': 20,
+  'space-24': 24,
+  'space-32': 32,
+  'space-36': 36,
+  'space-40': 40,
+  'space-60': 60,
+  'space-80': 80,
+  'space-100': 100,
+} as const;
+
+export const tabletSpacing = {
+  'space-0': 0,
+  'space-4': 4,
+  'space-8': 8,
+  'space-12': 12,
+  'space-16': 16,
+  'space-20': 16,
+  'space-24': 20,
+  'space-32': 24,
+  'space-36': 32,
+  'space-40': 36,
+  'space-60': 40,
+  'space-80': 60,
+  'space-100': 80,
+} as const;
+
+export const mobileSpacing = {
+  'space-0': 0,
+  'space-4': 4,
+  'space-8': 4,
+  'space-12': 8,
+  'space-16': 12,
+  'space-20': 16,
+  'space-24': 16,
+  'space-32': 20,
+  'space-36': 24,
+  'space-40': 32,
+  'space-60': 36,
+  'space-80': 40,
+  'space-100': 60,
+} as const;
