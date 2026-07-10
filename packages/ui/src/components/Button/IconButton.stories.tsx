@@ -5,7 +5,7 @@ import { ArrowLeft01Icon, Location02Icon } from '@hugeicons/core-free-icons';
 
 import { lightColors } from '../../tokens';
 import { IconButton } from './IconButton';
-import { Example } from './storyHelpers';
+import { Example } from '../storyHelpers';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Components/Buttons',

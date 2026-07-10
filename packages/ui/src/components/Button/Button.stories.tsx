@@ -5,7 +5,7 @@ import { Calendar04Icon, Location02Icon } from '@hugeicons/core-free-icons';
 
 import { lightColors } from '../../tokens';
 import { Button } from './Button';
-import { Example, LABEL_TYPE_VARS, LAYOUT_VARS } from './storyHelpers';
+import { Example, LABEL_TYPE_VARS, LAYOUT_VARS } from '../storyHelpers';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Buttons',
