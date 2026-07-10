@@ -21,7 +21,7 @@ export function Chip({ label, selected, disabled, icon, onPress, onClose, style,
       icon={icon}
       onPress={onPress}
       onClose={onClose}
-      style={style}
+      style={[{ alignSelf: 'flex-start' }, style]}
       testID={testID}
     >
       {label}
