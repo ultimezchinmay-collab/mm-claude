@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@meetmedico/ui": "*",
-    "next": "^9.3.3",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "next": "^14.2.0", 
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
     "react-native-web": "^0.21.2"
   },
   "devDependencies": {
