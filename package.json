@@ -11,6 +11,7 @@
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "build": "npm run build --workspace=packages/ui",
+    "build:web": "npm run build --workspace=apps/web",
     "tokens:css": "npm run tokens:css --workspace=packages/ui",
     "mobile": "npm run start --workspace=apps/mobile",
     "web": "npm run dev --workspace=apps/web"
