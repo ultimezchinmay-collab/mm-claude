@@ -119,6 +119,8 @@ export function PickerTriggerField({
 export const fieldStyles = StyleSheet.create({
   wrapper: {
     marginTop: webSpacing['space-8'],
+    alignSelf: 'flex-start',
+    minWidth: 320,
   },
   frame: {
     position: 'relative',

@@ -80,6 +80,8 @@ const styles = StyleSheet.create({
   frame: {
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'flex-start',
+    minWidth: 320,
     borderWidth: 1,
     borderRadius: webRadii['border-radius-8'],
     paddingHorizontal: webSpacing['space-12'],

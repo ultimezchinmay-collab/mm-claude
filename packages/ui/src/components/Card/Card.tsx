@@ -19,7 +19,7 @@ const VARIANT_TO_MODE: Record<NonNullable<CardProps['variant']>, 'elevated' | 'o
 
 export function Card({ title, subtitle, variant = 'elevated', onPress, children, style, testID }: CardProps) {
   return (
-    <PaperCard mode={VARIANT_TO_MODE[variant]} onPress={onPress} style={style} testID={testID}>
+    <PaperCard mode={VARIANT_TO_MODE[variant]} onPress={onPress} style={[{ alignSelf: 'flex-start' }, style]} testID={testID}>
       <PaperCard.Title title={title} subtitle={subtitle} />
       {children ? <PaperCard.Content>{children}</PaperCard.Content> : null}
     </PaperCard>
