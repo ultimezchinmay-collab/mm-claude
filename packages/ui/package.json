@@ -9,6 +9,7 @@
     ".": "./src/index.ts",
     "./tokens": "./src/tokens/index.ts",
     "./components/Button": "./src/components/Button/index.ts",
+    "./catalog": "./src/catalog/registry.ts",
     "./styles.css": "./src/tokens/variables.css",
     "./package.json": "./package.json"
   },
@@ -27,18 +28,19 @@
     "react-native": ">=0.86"
   },
   "dependencies": {
+    "@hugeicons/core-free-icons": "^4.2.2",
+    "@hugeicons/react-native": "^1.0.15",
     "react-native-paper": "^5.15.3",
-    "react-native-safe-area-context": "~5.7.0"
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-svg": "15.15.4"
   },
   "devDependencies": {
     "@react-native/jest-preset": "*",
-    "@hugeicons/core-free-icons": "^4.2.2",
-    "@hugeicons/react-native": "^1.0.15",
     "@testing-library/react-native": "^13.0.1",
     "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.5",
     "@types/react": "~19.2.2",
     "jest": "^29.7.0",
-    "react-native-svg": "15.15.4",
     "react-test-renderer": "19.2.3",
     "tsup": "^8.3.5",
     "tsx": "^4.23.0",

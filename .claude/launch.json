@@ -8,9 +8,9 @@
       "port": 3000
     },
     {
-      "name": "storybook-web",
+      "name": "mobile-web",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "storybook:web"],
+      "runtimeArgs": ["run", "web", "--workspace=apps/mobile"],
       "port": 8081
     }
   ]

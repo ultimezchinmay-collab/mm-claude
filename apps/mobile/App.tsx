@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
   useFonts,
   BeVietnamPro_400Regular,
@@ -31,14 +31,7 @@ function DesignSystemApp() {
   );
 }
 
-let RootComponent: ComponentType = DesignSystemApp;
-
-if (process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === 'true') {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports -- Metro needs this conditional require, not a static import, to swap the root component.
-  RootComponent = require('./.rnstorybook').default;
-}
-
-/** Loads Be Vietnam Pro before rendering either the app shell or the Storybook UI. */
+/** Loads Be Vietnam Pro before rendering the app. */
 function FontGate({ children }: { children: ReactNode }) {
   const [fontsLoaded] = useFonts({
     'type-weight-regular-400': BeVietnamPro_400Regular,
@@ -55,7 +48,7 @@ function FontGate({ children }: { children: ReactNode }) {
 export default function App() {
   return (
     <FontGate>
-      <RootComponent />
+      <DesignSystemApp />
     </FontGate>
   );
 }

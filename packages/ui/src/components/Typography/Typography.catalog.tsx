@@ -1,21 +1,11 @@
 import { View } from 'react-native';
-import type { Meta, StoryObj } from '@storybook/react-native';
 
 import { Typography } from './Typography';
 
-const meta: Meta<typeof Typography> = {
-  title: 'Foundations/Typography',
-  component: Typography,
-  args: {
-    children: 'The quick brown fox',
-  },
-};
+export const title = 'Typography';
 
-export default meta;
-type Story = StoryObj<typeof Typography>;
-
-export const AllVariants: Story = {
-  render: () => (
+export default function TypographyCatalog() {
+  return (
     <View style={{ gap: 8, padding: 16 }}>
       <Typography variant="displaySmall">displaySmall</Typography>
       <Typography variant="headlineMedium">headlineMedium</Typography>
@@ -27,5 +17,5 @@ export const AllVariants: Story = {
       <Typography variant="labelLarge">labelLarge</Typography>
       <Typography variant="labelSmall">labelSmall</Typography>
     </View>
-  ),
-};
+  );
+}

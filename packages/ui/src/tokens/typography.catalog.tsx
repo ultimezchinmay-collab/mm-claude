@@ -1,5 +1,4 @@
 import { ScrollView, Text, View } from 'react-native';
-import type { Meta, StoryObj } from '@storybook/react-native';
 
 import {
   fontFamilyVariables,
@@ -9,6 +8,8 @@ import {
   type CssVariable,
 } from './cssVariables';
 import { mobileTypography } from './typography';
+
+export const title = 'Typography Tokens';
 
 function Row({ name, value }: CssVariable) {
   return (
@@ -41,7 +42,7 @@ function mobileLineHeightVariables(): CssVariable[] {
   }));
 }
 
-function TypographyTokens() {
+export default function TypographyTokensCatalog() {
   return (
     <ScrollView style={{ padding: 12 }}>
       <Section title="Font Size (Web)" entries={fontSizeVariables()} />
@@ -53,13 +54,3 @@ function TypographyTokens() {
     </ScrollView>
   );
 }
-
-const meta: Meta<typeof TypographyTokens> = {
-  title: 'Foundations/Typography',
-  component: TypographyTokens,
-};
-
-export default meta;
-type Story = StoryObj<typeof TypographyTokens>;
-
-export const AllTokens: Story = {};

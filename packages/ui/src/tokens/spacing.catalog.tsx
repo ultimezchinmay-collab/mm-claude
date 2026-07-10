@@ -1,7 +1,8 @@
 import { ScrollView, Text, View } from 'react-native';
-import type { Meta, StoryObj } from '@storybook/react-native';
 
 import { webSpacing, tabletSpacing, mobileSpacing } from './spacing';
+
+export const title = 'Spacing';
 
 function Row({ name, value }: { name: string; value: number }) {
   return (
@@ -30,7 +31,7 @@ function Scale({
   );
 }
 
-function SpacingTokens() {
+export default function SpacingCatalog() {
   return (
     <ScrollView style={{ padding: 12 }}>
       <Scale title="Web" scale={webSpacing} />
@@ -39,13 +40,3 @@ function SpacingTokens() {
     </ScrollView>
   );
 }
-
-const meta: Meta<typeof SpacingTokens> = {
-  title: 'Foundations/Spacing',
-  component: SpacingTokens,
-};
-
-export default meta;
-type Story = StoryObj<typeof SpacingTokens>;
-
-export const AllSpacing: Story = {};

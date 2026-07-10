@@ -1,26 +1,9 @@
 import { View } from 'react-native';
-import type { Meta, StoryObj } from '@storybook/react-native';
 
 import { DatePicker } from './DatePicker';
-import { Example } from '../storyHelpers';
+import { Example } from '../catalogHelpers';
 
-const meta: Meta<typeof DatePicker> = {
-  title: 'Components/DatePicker',
-  component: DatePicker,
-  args: {
-    label: 'Date',
-    required: true,
-    value: '',
-    onPress: () => {},
-  },
-};
-
-export default meta;
-type Story = StoryObj<typeof DatePicker>;
-
-export const Default: Story = {};
-export const WithValue: Story = { args: { value: '12 Jan 2026' } };
-export const Disabled: Story = { args: { disabled: true } };
+export const title = 'Date Picker';
 
 const vars = [
   '--color-neutral-300',
@@ -40,8 +23,8 @@ const vars = [
   '--type-weight-medium-500',
 ];
 
-export const AllVariants: Story = {
-  render: () => (
+export default function DatePickerCatalog() {
+  return (
     <View style={{ padding: 16 }}>
       <Example vars={vars}>
         <DatePicker label="Date" required value="" onPress={() => {}} />
@@ -53,5 +36,5 @@ export const AllVariants: Story = {
         <DatePicker label="Date" required value="" onPress={() => {}} disabled />
       </Example>
     </View>
-  ),
-};
+  );
+}

@@ -1,8 +1,9 @@
 import { ScrollView, Text, View } from 'react-native';
-import type { Meta, StoryObj } from '@storybook/react-native';
 
 import { lightColors, darkColors } from './colors';
 import { colorVariables, staticVariables, type CssVariable } from './cssVariables';
+
+export const title = 'CSS Variables';
 
 function VariableRow({ name, value }: CssVariable) {
   const isColor = value.startsWith('#');
@@ -38,7 +39,7 @@ function Section({ title, entries }: { title: string; entries: CssVariable[] }) 
   );
 }
 
-function CssVariablesTokens() {
+export default function CssVariablesCatalog() {
   return (
     <ScrollView style={{ padding: 12 }}>
       <Section title=":root (light)" entries={[...colorVariables(lightColors), ...staticVariables()]} />
@@ -46,13 +47,3 @@ function CssVariablesTokens() {
     </ScrollView>
   );
 }
-
-const meta: Meta<typeof CssVariablesTokens> = {
-  title: 'Foundations/CSS Variables',
-  component: CssVariablesTokens,
-};
-
-export default meta;
-type Story = StoryObj<typeof CssVariablesTokens>;
-
-export const AllVariables: Story = {};

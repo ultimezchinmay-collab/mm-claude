@@ -1,7 +1,8 @@
 import { ScrollView, Text, View } from 'react-native';
-import type { Meta, StoryObj } from '@storybook/react-native';
 
 import { webRadii, tabletRadii, mobileRadii } from './radii';
+
+export const title = 'Radius';
 
 function Swatch({ name, value }: { name: string; value: number }) {
   return (
@@ -39,7 +40,7 @@ function Scale({
   );
 }
 
-function RadiusTokens() {
+export default function RadiiCatalog() {
   return (
     <ScrollView style={{ padding: 12 }}>
       <Scale title="Web" scale={webRadii} />
@@ -48,13 +49,3 @@ function RadiusTokens() {
     </ScrollView>
   );
 }
-
-const meta: Meta<typeof RadiusTokens> = {
-  title: 'Foundations/Radius',
-  component: RadiusTokens,
-};
-
-export default meta;
-type Story = StoryObj<typeof RadiusTokens>;
-
-export const AllRadii: Story = {};

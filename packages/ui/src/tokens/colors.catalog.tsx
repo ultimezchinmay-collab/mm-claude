@@ -1,8 +1,9 @@
 import { ScrollView, Text, View } from 'react-native';
-import type { Meta, StoryObj } from '@storybook/react-native';
 
 import { lightColors, darkColors } from './colors';
 import { toKebabCase } from './cssVariables';
+
+export const title = 'Colors';
 
 const SCALE_KEYS = [900, 600, 500, 300, 100, 50] as const;
 const SCALE_FAMILIES = ['neutral', 'white', 'primary', 'secondary', 'success', 'error', 'warning'] as const;
@@ -59,7 +60,7 @@ function Palette({ title, colors }: { title: string; colors: typeof lightColors 
   );
 }
 
-function ColorTokens() {
+export default function ColorsCatalog() {
   return (
     <ScrollView style={{ padding: 12 }}>
       <Palette title="Light" colors={lightColors} />
@@ -67,13 +68,3 @@ function ColorTokens() {
     </ScrollView>
   );
 }
-
-const meta: Meta<typeof ColorTokens> = {
-  title: 'Foundations/Colors',
-  component: ColorTokens,
-};
-
-export default meta;
-type Story = StoryObj<typeof ColorTokens>;
-
-export const AllColors: Story = {};

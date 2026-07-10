@@ -43,7 +43,6 @@ yarn-error.*
 
 # monorepo build outputs
 dist/
-dist-storybook/
 .next/
 .turbo/
 *.tgz

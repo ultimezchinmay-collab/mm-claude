@@ -1,26 +1,9 @@
 import { View } from 'react-native';
-import type { Meta, StoryObj } from '@storybook/react-native';
 
 import { TimePicker } from './TimePicker';
-import { Example } from '../storyHelpers';
+import { Example } from '../catalogHelpers';
 
-const meta: Meta<typeof TimePicker> = {
-  title: 'Components/TimePicker',
-  component: TimePicker,
-  args: {
-    label: 'Time',
-    required: true,
-    value: '',
-    onPress: () => {},
-  },
-};
-
-export default meta;
-type Story = StoryObj<typeof TimePicker>;
-
-export const Default: Story = {};
-export const WithValue: Story = { args: { value: '4:30 PM' } };
-export const Disabled: Story = { args: { disabled: true } };
+export const title = 'Time Picker';
 
 const vars = [
   '--color-neutral-300',
@@ -40,8 +23,8 @@ const vars = [
   '--type-weight-medium-500',
 ];
 
-export const AllVariants: Story = {
-  render: () => (
+export default function TimePickerCatalog() {
+  return (
     <View style={{ padding: 16 }}>
       <Example vars={vars}>
         <TimePicker label="Time" required value="" onPress={() => {}} />
@@ -53,5 +36,5 @@ export const AllVariants: Story = {
         <TimePicker label="Time" required value="" onPress={() => {}} disabled />
       </Example>
     </View>
-  ),
-};
+  );
+}

@@ -13,7 +13,6 @@
     "build": "npm run build --workspace=packages/ui",
     "tokens:css": "npm run tokens:css --workspace=packages/ui",
     "mobile": "npm run start --workspace=apps/mobile",
-    "storybook:web": "npm run storybook:web --workspace=apps/mobile",
     "web": "npm run dev --workspace=apps/web"
   },
   "devDependencies": {
