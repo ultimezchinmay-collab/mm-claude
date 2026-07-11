@@ -74,6 +74,17 @@ export default function IconButtonCatalog() {
           onPress={() => {}}
         />
       </Example>
+      <Example
+        name="Back / Disabled"
+        groups={[
+          { element: 'Icon', vars: ['--color-neutral-900 (dimmed)'] },
+          { element: 'Background', vars: ['transparent (no border)'] },
+          { element: 'Border', vars: ['--color-neutral-100'] },
+          { element: 'Spacing', vars: spacing },
+        ]}
+      >
+        <IconButton variant="back" icon={backArrow(lightColors.neutral[900])} disabled onPress={() => {}} />
+      </Example>
     </View>
   );
 }

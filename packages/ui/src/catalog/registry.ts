@@ -22,6 +22,21 @@ import MultiSelectDropdownCatalog, {
 } from '../components/MultiSelectDropdown/MultiSelectDropdown.catalog';
 import DatePickerCatalog, { title as datePickerTitle } from '../components/DatePicker/DatePicker.catalog';
 import TimePickerCatalog, { title as timePickerTitle } from '../components/TimePicker/TimePicker.catalog';
+import CountryPickerCatalog, { title as countryPickerTitle } from '../components/CountryPicker/CountryPicker.catalog';
+import PhoneNumberInputCatalog, {
+  title as phoneNumberInputTitle,
+} from '../components/PhoneNumberInput/PhoneNumberInput.catalog';
+import FileUploadFieldCatalog, {
+  title as fileUploadFieldTitle,
+} from '../components/FileUploadField/FileUploadField.catalog';
+import PhotoUploadCatalog, { title as photoUploadTitle } from '../components/PhotoUpload/PhotoUpload.catalog';
+import MultiImageUploadCatalog, {
+  title as multiImageUploadTitle,
+} from '../components/MultiImageUpload/MultiImageUpload.catalog';
+import OTPInputCatalog, { title as otpInputTitle } from '../components/OTPInput/OTPInput.catalog';
+import SwitchCatalog, { title as switchTitle } from '../components/Switch/Switch.catalog';
+import CheckboxCatalog, { title as checkboxTitle } from '../components/Checkbox/Checkbox.catalog';
+import RadioCatalog, { title as radioTitle } from '../components/Radio/Radio.catalog';
 import TypographyCatalog, { title as typographyTitle } from '../components/Typography/Typography.catalog';
 
 export interface CatalogEntry {
@@ -51,5 +66,14 @@ export const catalogEntries: CatalogEntry[] = [
   { section: 'Components', name: multiSelectDropdownTitle, Component: MultiSelectDropdownCatalog },
   { section: 'Components', name: datePickerTitle, Component: DatePickerCatalog },
   { section: 'Components', name: timePickerTitle, Component: TimePickerCatalog },
+  { section: 'Components', name: countryPickerTitle, Component: CountryPickerCatalog },
+  { section: 'Components', name: phoneNumberInputTitle, Component: PhoneNumberInputCatalog },
+  { section: 'Components', name: fileUploadFieldTitle, Component: FileUploadFieldCatalog },
+  { section: 'Components', name: photoUploadTitle, Component: PhotoUploadCatalog },
+  { section: 'Components', name: multiImageUploadTitle, Component: MultiImageUploadCatalog },
+  { section: 'Components', name: otpInputTitle, Component: OTPInputCatalog },
+  { section: 'Components', name: switchTitle, Component: SwitchCatalog },
+  { section: 'Components', name: checkboxTitle, Component: CheckboxCatalog },
+  { section: 'Components', name: radioTitle, Component: RadioCatalog },
   { section: 'Components', name: typographyTitle, Component: TypographyCatalog },
 ];
