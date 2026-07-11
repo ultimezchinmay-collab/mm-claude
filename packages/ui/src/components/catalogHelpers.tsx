@@ -13,13 +13,13 @@ export function VariablesUsed({ groups }: { groups: ElementVariables[] }) {
 
   return (
     <View style={{ marginTop: 8, marginBottom: 24, gap: 8 }}>
-      {groups.map((group) => (
-        <View key={group.element}>
+      {groups.map((group, groupIndex) => (
+        <View key={`${group.element}-${groupIndex}`}>
           <Text style={{ fontSize: 11, fontFamily: 'monospace', fontWeight: '700', color: colors.neutral[600] }}>
             {group.element}
           </Text>
-          {group.vars.map((name) => (
-            <Text key={name} style={{ fontSize: 11, fontFamily: 'monospace', color: colors.neutral[500], paddingLeft: 10 }}>
+          {group.vars.map((name, index) => (
+            <Text key={`${name}-${index}`} style={{ fontSize: 11, fontFamily: 'monospace', color: colors.neutral[500], paddingLeft: 10 }}>
               {name}
             </Text>
           ))}
