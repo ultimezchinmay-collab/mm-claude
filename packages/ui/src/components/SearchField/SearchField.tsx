@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { StyleSheet, TextInput, View, useColorScheme } from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import { SearchIcon } from '@hugeicons/core-free-icons';
 
 import { darkColors, lightColors, webRadii, webSpacing, webTypography } from '../../tokens';
+import { useThemeColors } from '../../theme';
 import { webNoOutline, type FieldVisualState } from '../fieldShell';
 
 export interface SearchFieldProps {
@@ -43,8 +44,7 @@ export function SearchField({
   testID,
   previewState,
 }: SearchFieldProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   const [focused, setFocused] = useState(false);
   const [hovered, setHovered] = useState(false);
 

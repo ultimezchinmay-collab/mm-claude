@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { TextInput, View, useColorScheme } from 'react-native';
+import { TextInput, View } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 
-import { darkColors, lightColors } from '../../tokens';
+import { useThemeColors } from '../../theme';
 import {
   FieldHelperText,
   FieldLabel,
@@ -47,8 +47,7 @@ export function TextField({
   testID,
   previewState,
 }: TextFieldProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   const [focused, setFocused] = useState(false);
   const [hovered, setHovered] = useState(false);
 

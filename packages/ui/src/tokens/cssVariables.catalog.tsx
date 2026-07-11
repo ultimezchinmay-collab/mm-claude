@@ -2,10 +2,11 @@ import { ScrollView, Text, View } from 'react-native';
 
 import { lightColors, darkColors } from './colors';
 import { colorVariables, staticVariables, type CssVariable } from './cssVariables';
+import { useThemeColors } from '../theme';
 
 export const title = 'CSS Variables';
 
-function VariableRow({ name, value }: CssVariable) {
+function VariableRow({ name, value, textColor, mutedColor }: CssVariable & { textColor: string; mutedColor: string }) {
   const isColor = value.startsWith('#');
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
@@ -22,18 +23,22 @@ function VariableRow({ name, value }: CssVariable) {
           }}
         />
       ) : null}
-      <Text style={{ fontSize: 12, fontFamily: 'monospace', width: 260 }}>{name}</Text>
-      <Text style={{ fontSize: 12, opacity: 0.7 }}>{value}</Text>
+      <Text style={{ fontSize: 12, fontFamily: 'monospace', width: 260, color: textColor }}>{name}</Text>
+      <Text style={{ fontSize: 12, color: mutedColor }}>{value}</Text>
     </View>
   );
 }
 
 function Section({ title, entries }: { title: string; entries: CssVariable[] }) {
+  const colors = useThemeColors();
+  const textColor = colors.neutral[900];
+  const mutedColor = colors.neutral[600];
+
   return (
     <View style={{ marginBottom: 24 }}>
-      <Text style={{ fontSize: 16, fontWeight: '700', marginBottom: 8 }}>{title}</Text>
+      <Text style={{ fontSize: 16, fontWeight: '700', marginBottom: 8, color: textColor }}>{title}</Text>
       {entries.map((entry) => (
-        <VariableRow key={entry.name} {...entry} />
+        <VariableRow key={entry.name} {...entry} textColor={textColor} mutedColor={mutedColor} />
       ))}
     </View>
   );

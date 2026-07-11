@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { Pressable, StyleSheet, useColorScheme } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 
 import { darkColors, lightColors, webSpacing, webRadii } from '../../tokens';
+import { useThemeColors } from '../../theme';
 
 export type IconButtonVariant = 'primary' | 'secondary' | 'back';
 type VisualState = 'default' | 'hover' | 'disabled';
@@ -45,8 +46,7 @@ export function IconButton({
   testID,
   previewState,
 }: IconButtonProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   const [hovered, setHovered] = useState(false);
 
   const state: VisualState = previewState ?? (disabled ? 'disabled' : hovered ? 'hover' : 'default');
