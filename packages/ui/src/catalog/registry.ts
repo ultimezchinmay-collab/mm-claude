@@ -10,6 +10,8 @@ import ButtonCatalog, { title as buttonTitle } from '../components/Button/Button
 import IconButtonCatalog, { title as iconButtonTitle } from '../components/Button/IconButton.catalog';
 import CardCatalog, { title as cardTitle } from '../components/Card/Card.catalog';
 import ChipCatalog, { title as chipTitle } from '../components/Chip/Chip.catalog';
+import BadgeCatalog, { title as badgeTitle } from '../components/Badge/Badge.catalog';
+import LabelCatalog, { title as labelTitle } from '../components/Label/Label.catalog';
 import TextFieldCatalog, { title as textFieldTitle } from '../components/TextField/TextField.catalog';
 import TextAreaCatalog, { title as textAreaTitle } from '../components/TextArea/TextArea.catalog';
 import PasswordFieldCatalog, { title as passwordFieldTitle } from '../components/PasswordField/PasswordField.catalog';
@@ -39,6 +41,8 @@ export const catalogEntries: CatalogEntry[] = [
   { section: 'Components', name: iconButtonTitle, Component: IconButtonCatalog },
   { section: 'Components', name: cardTitle, Component: CardCatalog },
   { section: 'Components', name: chipTitle, Component: ChipCatalog },
+  { section: 'Components', name: badgeTitle, Component: BadgeCatalog },
+  { section: 'Components', name: labelTitle, Component: LabelCatalog },
   { section: 'Components', name: textFieldTitle, Component: TextFieldCatalog },
   { section: 'Components', name: textAreaTitle, Component: TextAreaCatalog },
   { section: 'Components', name: passwordFieldTitle, Component: PasswordFieldCatalog },
