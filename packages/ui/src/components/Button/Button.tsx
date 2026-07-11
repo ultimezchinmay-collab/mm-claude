@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { Pressable, StyleSheet, Text, useColorScheme } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 
 import { darkColors, lightColors, webSpacing, webRadii, webTypography } from '../../tokens';
+import { useThemeColors } from '../../theme';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'text-link';
 type VisualState = 'default' | 'hover' | 'disabled';
@@ -49,8 +50,7 @@ export function Button({
   testID,
   previewState,
 }: ButtonProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   const [hovered, setHovered] = useState(false);
 
   const state: VisualState = previewState ?? (disabled ? 'disabled' : hovered ? 'hover' : 'default');

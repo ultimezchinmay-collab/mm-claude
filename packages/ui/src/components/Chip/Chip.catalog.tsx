@@ -6,47 +6,43 @@ import { Example } from '../catalogHelpers';
 
 export const title = 'Chip';
 
-// Chip wraps react-native-paper's Chip, which resolves its label/icon/background/
-// border colors from theme roles (surface, onSurfaceVariant, outline,
-// secondaryContainer, onSecondaryContainer) that aren't defined in
-// tokens/colors.ts — same pre-existing gap as Card. Documented honestly.
-const note = (role: string) => [`Paper MD3 default: ${role} (not wired to our tokens)`];
+const spacingVars = ['--space-12', '--space-8', '--border-radius-8'];
 
-function groups(bgRole: string, borderRole: string, labelRole: string) {
-  return [
-    { element: 'Label text', vars: note(labelRole) },
-    { element: 'Icon', vars: note('onSurfaceVariant') },
-    { element: 'Background', vars: note(bgRole) },
-    { element: 'Border', vars: [...note(borderRole), '--border-radius-8 (roundness, ours)'] },
+function groups(border: string, bg: string, withIcon?: boolean) {
+  const g = [
+    { element: 'Label text', vars: ['--color-neutral-900', '--type-family-primary', '--type-weight-medium-500', '--label', '--type-lh-label'] },
+    { element: 'Background', vars: [bg] },
+    { element: 'Border', vars: [border, '--border-radius-8'] },
+    { element: 'Spacing', vars: spacingVars },
   ];
+  if (withIcon) g.push({ element: 'Close icon', vars: ['--color-primary-600'] });
+  return g;
 }
 
-/** Real toggle — click to select/unselect, proving the chip actually responds to interaction. */
+/** Real toggle — click to select/unselect, matching the Figma "Default"/"Selected" states. */
 function ToggleChip() {
   const [selected, setSelected] = useState(false);
-  return <Chip label={selected ? 'Selected' : 'Default'} selected={selected} onPress={() => setSelected((s) => !s)} />;
-}
-
-function RemovableChip() {
-  const [visible, setVisible] = useState(true);
-  if (!visible) return <Chip label="Removed — reload to reset" disabled />;
-  return <Chip label="With icon" icon="check" onClose={() => setVisible(false)} />;
+  return (
+    <Chip
+      label={selected ? 'Selected' : 'Default'}
+      selected={selected}
+      onPress={() => setSelected((s) => !s)}
+      onClose={() => setSelected(false)}
+    />
+  );
 }
 
 export default function ChipCatalog() {
   return (
     <View style={{ padding: 16 }}>
-      <Example name="Default / Selected (click to toggle)" groups={groups('surface / secondaryContainer', 'outline', 'onSurfaceVariant / onSecondaryContainer')}>
+      <Example name="Default (click to select)" groups={groups('--color-neutral-100', 'transparent')}>
         <ToggleChip />
       </Example>
-      <Example name="Disabled" groups={groups('surface (dimmed)', 'outline (dimmed)', 'onSurfaceVariant (dimmed)')}>
-        <Chip label="Disabled" disabled />
+      <Example name="Selected (click x to remove)" groups={groups('--color-primary-500', '--color-primary-50', true)}>
+        <Chip label="Selected" selected onClose={() => {}} />
       </Example>
-      <Example
-        name="With icon (click x to remove)"
-        groups={groups('surface', 'outline', 'onSurfaceVariant')}
-      >
-        <RemovableChip />
+      <Example name="Disabled" groups={groups('--color-neutral-100', 'transparent')}>
+        <Chip label="Disabled" disabled />
       </Example>
     </View>
   );

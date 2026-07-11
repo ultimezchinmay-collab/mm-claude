@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Pressable, TextInput, View, useColorScheme } from 'react-native';
+import { Pressable, TextInput, View } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import { ViewIcon, ViewOffIcon } from '@hugeicons/core-free-icons';
 
-import { darkColors, lightColors } from '../../tokens';
+import { useThemeColors } from '../../theme';
 import {
   FieldHelperText,
   FieldLabel,
@@ -45,8 +45,7 @@ export function PasswordField({
   previewState,
   defaultVisible = false,
 }: PasswordFieldProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   const [focused, setFocused] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(defaultVisible);

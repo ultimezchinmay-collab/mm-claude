@@ -2,6 +2,7 @@ import { ScrollView, Text, View } from 'react-native';
 
 import { lightColors, darkColors } from './colors';
 import { toKebabCase } from './cssVariables';
+import { useThemeColors } from '../theme';
 
 export const title = 'Colors';
 
@@ -16,7 +17,7 @@ const FLAT_KEYS = [
   'cardBackground',
 ] as const;
 
-function Swatch({ name, value }: { name: string; value: string }) {
+function Swatch({ name, value, textColor, mutedColor }: { name: string; value: string; textColor: string; mutedColor: string }) {
   return (
     <View style={{ width: 140, marginRight: 8, marginBottom: 12 }}>
       <View
@@ -28,32 +29,48 @@ function Swatch({ name, value }: { name: string; value: string }) {
           borderColor: '#8884',
         }}
       />
-      <Text style={{ fontSize: 11, marginTop: 4, fontFamily: 'monospace' }}>{name}</Text>
-      <Text style={{ fontSize: 10, opacity: 0.6 }}>{value}</Text>
+      <Text style={{ fontSize: 11, marginTop: 4, fontFamily: 'monospace', color: textColor }}>{name}</Text>
+      <Text style={{ fontSize: 10, color: mutedColor }}>{value}</Text>
     </View>
   );
 }
 
 function Palette({ title, colors }: { title: string; colors: typeof lightColors | typeof darkColors }) {
+  const themeColors = useThemeColors();
+  const textColor = themeColors.neutral[900];
+  const mutedColor = themeColors.neutral[500];
+
   return (
     <View style={{ marginBottom: 24 }}>
-      <Text style={{ fontSize: 16, fontWeight: '700', marginBottom: 8 }}>{title}</Text>
+      <Text style={{ fontSize: 16, fontWeight: '700', marginBottom: 8, color: textColor }}>{title}</Text>
 
       {SCALE_FAMILIES.map((family) => (
         <View key={family} style={{ marginBottom: 12 }}>
-          <Text style={{ fontSize: 13, fontWeight: '600', marginBottom: 4 }}>{family}</Text>
+          <Text style={{ fontSize: 13, fontWeight: '600', marginBottom: 4, color: textColor }}>{family}</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
             {SCALE_KEYS.map((key) => (
-              <Swatch key={key} name={`--color-${family}-${key}`} value={colors[family][key]} />
+              <Swatch
+                key={key}
+                name={`--color-${family}-${key}`}
+                value={colors[family][key]}
+                textColor={textColor}
+                mutedColor={mutedColor}
+              />
             ))}
           </View>
         </View>
       ))}
 
-      <Text style={{ fontSize: 13, fontWeight: '600', marginBottom: 4 }}>background</Text>
+      <Text style={{ fontSize: 13, fontWeight: '600', marginBottom: 4, color: textColor }}>background</Text>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {FLAT_KEYS.map((key) => (
-          <Swatch key={key} name={`--color-${toKebabCase(key)}`} value={colors[key]} />
+          <Swatch
+            key={key}
+            name={`--color-${toKebabCase(key)}`}
+            value={colors[key]}
+            textColor={textColor}
+            mutedColor={mutedColor}
+          />
         ))}
       </View>
     </View>

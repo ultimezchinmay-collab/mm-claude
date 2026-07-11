@@ -71,3 +71,27 @@ export const mobileTypography = {
 } as const;
 
 export type TypographyScale = typeof mobileTypography;
+
+/**
+ * Matches react-native-paper's MD3TypescaleKey (displayLarge...bodySmall) — the
+ * Typography component passes `variant` straight through to Paper's own <Text>,
+ * so this reflects what's actually accepted at runtime rather than our own
+ * webTypography/mobileTypography key names, which use different naming and
+ * don't have a 1:1 mapping to Paper's 15-variant scale.
+ */
+export type TypeScaleKey =
+  | 'displayLarge'
+  | 'displayMedium'
+  | 'displaySmall'
+  | 'headlineLarge'
+  | 'headlineMedium'
+  | 'headlineSmall'
+  | 'titleLarge'
+  | 'titleMedium'
+  | 'titleSmall'
+  | 'labelLarge'
+  | 'labelMedium'
+  | 'labelSmall'
+  | 'bodyLarge'
+  | 'bodyMedium'
+  | 'bodySmall';

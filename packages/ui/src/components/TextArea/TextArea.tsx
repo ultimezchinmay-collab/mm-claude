@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { StyleSheet, TextInput, View, useColorScheme } from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 
-import { darkColors, lightColors } from '../../tokens';
+import { useThemeColors } from '../../theme';
 import {
   FieldHelperText,
   FieldLabel,
@@ -44,8 +44,7 @@ export function TextArea({
   testID,
   previewState,
 }: TextAreaProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   const [focused, setFocused] = useState(false);
   const [hovered, setHovered] = useState(false);
 

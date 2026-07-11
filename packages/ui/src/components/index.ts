@@ -10,3 +10,5 @@ export * from './TimePicker';
 export * from './Card';
 export * from './Typography';
 export * from './Chip';
+export * from './Badge';
+export * from './Label';

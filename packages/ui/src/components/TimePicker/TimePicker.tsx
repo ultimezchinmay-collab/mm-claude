@@ -1,8 +1,7 @@
-import { useColorScheme } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { Clock01Icon } from '@hugeicons/core-free-icons';
 
-import { darkColors, lightColors } from '../../tokens';
+import { useThemeColors } from '../../theme';
 import { PickerTriggerField, type FieldVisualState } from '../fieldShell';
 
 export interface TimePickerProps {
@@ -22,7 +21,6 @@ export interface TimePickerProps {
 }
 
 export function TimePicker({ placeholder = 'Select Time', ...props }: TimePickerProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   return <PickerTriggerField {...props} placeholder={placeholder} icon={Clock01Icon} colors={colors} />;
 }

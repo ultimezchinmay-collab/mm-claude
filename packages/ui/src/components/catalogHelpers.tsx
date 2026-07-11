@@ -1,5 +1,7 @@
 import { Text, View } from 'react-native';
 
+import { useThemeColors } from '../theme';
+
 export interface ElementVariables {
   /** The visual part these variables apply to, e.g. "Label text", "Border", "Icon". */
   element: string;
@@ -7,15 +9,17 @@ export interface ElementVariables {
 }
 
 export function VariablesUsed({ groups }: { groups: ElementVariables[] }) {
+  const colors = useThemeColors();
+
   return (
     <View style={{ marginTop: 8, marginBottom: 24, gap: 8 }}>
       {groups.map((group) => (
         <View key={group.element}>
-          <Text style={{ fontSize: 11, fontFamily: 'monospace', fontWeight: '700', opacity: 0.7 }}>
+          <Text style={{ fontSize: 11, fontFamily: 'monospace', fontWeight: '700', color: colors.neutral[600] }}>
             {group.element}
           </Text>
           {group.vars.map((name) => (
-            <Text key={name} style={{ fontSize: 11, fontFamily: 'monospace', opacity: 0.55, paddingLeft: 10 }}>
+            <Text key={name} style={{ fontSize: 11, fontFamily: 'monospace', color: colors.neutral[500], paddingLeft: 10 }}>
               {name}
             </Text>
           ))}
@@ -35,6 +39,8 @@ export function Example({
   children: React.ReactNode;
   groups: ElementVariables[];
 }) {
+  const colors = useThemeColors();
+
   return (
     <View style={{ marginBottom: 28 }}>
       <Text
@@ -43,7 +49,7 @@ export function Example({
           fontFamily: 'monospace',
           fontWeight: '700',
           marginBottom: 10,
-          opacity: 0.5,
+          color: colors.neutral[500],
           textTransform: 'uppercase',
           letterSpacing: 0.5,
         }}

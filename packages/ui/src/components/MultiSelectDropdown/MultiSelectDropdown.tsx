@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, useColorScheme } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { HugeiconsIcon } from '@hugeicons/react-native';
 import { ArrowDown01Icon, Cancel01Icon, Tick01Icon } from '@hugeicons/core-free-icons';
 
-import { darkColors, lightColors, webRadii, webSpacing, webTypography } from '../../tokens';
+import { webRadii, webSpacing, webTypography } from '../../tokens';
+import { useThemeColors } from '../../theme';
 import {
   FieldHelperText,
   FieldLabel,
@@ -51,8 +52,7 @@ export function MultiSelectDropdown({
   previewState,
   previewOpen,
 }: MultiSelectDropdownProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
 

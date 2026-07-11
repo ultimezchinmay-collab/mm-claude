@@ -1,8 +1,7 @@
-import { useColorScheme } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
 import { Calendar04Icon } from '@hugeicons/core-free-icons';
 
-import { darkColors, lightColors } from '../../tokens';
+import { useThemeColors } from '../../theme';
 import { PickerTriggerField, type FieldVisualState } from '../fieldShell';
 
 export interface DatePickerProps {
@@ -22,7 +21,6 @@ export interface DatePickerProps {
 }
 
 export function DatePicker({ placeholder = 'Select Date', ...props }: DatePickerProps) {
-  const scheme = useColorScheme();
-  const colors = scheme === 'dark' ? darkColors : lightColors;
+  const colors = useThemeColors();
   return <PickerTriggerField {...props} placeholder={placeholder} icon={Calendar04Icon} colors={colors} />;
 }
